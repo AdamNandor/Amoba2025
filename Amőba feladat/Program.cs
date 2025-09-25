@@ -25,11 +25,11 @@ namespace Amőba_feladat
             {
                 for (int j = 0; j < tablazat.GetLength(1); j++)
                 {
-                    tablazat[i, j] = " ";
+                    tablazat[i, j] = "   ";
                 }
             }
             bool x_y_lep = true;
-            string karakter = "x";
+            string karakter = " x ";
             bool lehet_oda=false;
             int tabla_mag = tablazat.GetLength(0);
             int tabla_szel = tablazat.GetLength(1);
@@ -38,7 +38,8 @@ namespace Amőba_feladat
             for (int i =0;i<=tabla_mag; i++)
             {
                 vizszintes_vonal += tabla_osszekoto_viz;
-               
+                vizszintes_vonal += tabla_vonalai;
+                vizszintes_vonal += tabla_vonalai;
                 vizszintes_vonal += tabla_vonalai;
             }
             while (true)
@@ -68,7 +69,7 @@ namespace Amőba_feladat
                     int koordinata_x = int.Parse(Console.ReadLine());
                     Console.WriteLine("Koordináta (y): ");
                     int koordinata_y = int.Parse(Console.ReadLine());
-                    if (tablazat[koordinata_y - 1, koordinata_x - 1] == " ")
+                    if (tablazat[koordinata_y - 1, koordinata_x - 1] == "   ")
                     {
                         lehet_oda = true;
                     }
@@ -88,12 +89,12 @@ namespace Amőba_feladat
 
                         if (x_y_lep)
                         {
-                            karakter = "x";
+                            karakter = " x ";
                             x_y_lep = false;
                         }
                         else
                         {
-                            karakter = "y";
+                            karakter = " y ";
                             x_y_lep = true;
                         }
 
@@ -114,6 +115,7 @@ namespace Amőba_feladat
                     {
                         Console.WriteLine(ex);
                     }
+                    
                 }
             }
 
