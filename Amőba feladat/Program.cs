@@ -52,10 +52,12 @@ namespace Amőba_feladat
                     }
                     else
                     {
+
                         lehet_oda= false;
                         Console.WriteLine("ide már nem lehet tenni!");
                         Console.WriteLine("enterre tovább");
                         Console.ReadLine();
+                        Console.Clear();
                     }
 
                     if (lehet_oda)
