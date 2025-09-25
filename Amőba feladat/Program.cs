@@ -22,6 +22,7 @@ namespace Amőba_feladat
             }
             bool x_y_lep = true;
             string karakter = "x";
+            bool lehet_oda=false;
             while (true)
             {
                 try
@@ -45,22 +46,39 @@ namespace Amőba_feladat
                     int koordinata_x = int.Parse(Console.ReadLine());
                     Console.WriteLine("Koordináta (y): ");
                     int koordinata_y = int.Parse(Console.ReadLine());
-                    if (x_y_lep)
+                    if (tablazat[koordinata_y - 1, koordinata_x - 1] == "[]")
                     {
-                        karakter = "x";
-                        x_y_lep = false;
+                        lehet_oda = true;
                     }
                     else
                     {
-                        karakter = "y";
-                        x_y_lep = true;
+                        lehet_oda= false;
+                        Console.WriteLine("ide már nem lehet tenni!");
+                        Console.WriteLine("enterre tovább");
+                        Console.ReadLine();
                     }
 
+                    if (lehet_oda)
+                    {
 
-                    // Tábla frissítése
-                    tablazat[koordinata_y - 1, koordinata_x - 1] = karakter;
 
-                    Console.Clear();
+                        if (x_y_lep)
+                        {
+                            karakter = "x";
+                            x_y_lep = false;
+                        }
+                        else
+                        {
+                            karakter = "y";
+                            x_y_lep = true;
+                        }
+
+
+                        // Tábla frissítése
+                        tablazat[koordinata_y - 1, koordinata_x - 1] = karakter;
+
+                        Console.Clear();
+                    }
                 }
 
                 catch (Exception ex)
