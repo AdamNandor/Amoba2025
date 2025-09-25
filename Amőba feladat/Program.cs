@@ -24,42 +24,55 @@ namespace Amőba_feladat
             string karakter = "x";
             while (true)
             {
-                
-              
-                // Kiírás
-                for (int i = 0; i < tablazat.GetLength(0); i++)
+                try
                 {
-                    for (int j = 0; j < tablazat.GetLength(1); j++)
-                    {
-                        Console.Write(tablazat[i, j] + " ");
-                      
-                    }
-                    Console.WriteLine();
-                   
-                }
-                Console.WriteLine(x_y_lep ? "X következik": "y következik");
 
-                // Felhasználói input
-                Console.WriteLine("Koordináta (x): ");
-                int koordinata_x = int.Parse(Console.ReadLine());
-                Console.WriteLine("Koordináta (y): ");
-                int koordinata_y = int.Parse(Console.ReadLine());
-                if (x_y_lep)
-                {
-                    karakter = "x";
-                    x_y_lep = false;
-                }
-                else
-                {
-                    karakter = "y";
-                    x_y_lep = true;
-                }
+                    // Kiírás
+                    for (int i = 0; i < tablazat.GetLength(0); i++)
+                    {
+                        for (int j = 0; j < tablazat.GetLength(1); j++)
+                        {
+                            Console.Write(tablazat[i, j] + " ");
+
+                        }
+                        Console.WriteLine();
+
+                    }
+                    Console.WriteLine(x_y_lep ? "X következik" : "y következik");
+
+                    // Felhasználói input
+                    Console.WriteLine("Koordináta (x): ");
+                    int koordinata_x = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Koordináta (y): ");
+                    int koordinata_y = int.Parse(Console.ReadLine());
+                    if (x_y_lep)
+                    {
+                        karakter = "x";
+                        x_y_lep = false;
+                    }
+                    else
+                    {
+                        karakter = "y";
+                        x_y_lep = true;
+                    }
 
 
                     // Tábla frissítése
                     tablazat[koordinata_y - 1, koordinata_x - 1] = karakter;
 
-                Console.Clear();
+                    Console.Clear();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine("hiba történt!");
+                    Console.WriteLine("Szeretné látni a hibát? (i/n)");
+                    string hiba = Console.ReadLine();
+                    if (hiba == "i")
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
             }
 
 
