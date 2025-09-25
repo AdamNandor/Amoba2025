@@ -10,6 +10,14 @@ namespace Amőba_feladat
     {
         static void Main(string[] args)
         {
+
+          
+            string tabla_vonalai = "-";
+            string tabla_osszekoto_viz = "+";
+            string tabla_osszekoto_fugg = "|";
+
+
+
             string[,] tablazat = new string[10, 10];
 
             // Tábla inicializálása
@@ -17,28 +25,42 @@ namespace Amőba_feladat
             {
                 for (int j = 0; j < tablazat.GetLength(1); j++)
                 {
-                    tablazat[i, j] = "[]";
+                    tablazat[i, j] = " ";
                 }
             }
             bool x_y_lep = true;
             string karakter = "x";
             bool lehet_oda=false;
+            int tabla_mag = tablazat.GetLength(0);
+            int tabla_szel = tablazat.GetLength(1);
+
+            string vizszintes_vonal = "";
+            for (int i =0;i<=tabla_mag; i++)
+            {
+                vizszintes_vonal += tabla_osszekoto_viz;
+               
+                vizszintes_vonal += tabla_vonalai;
+            }
             while (true)
             {
                 try
                 {
-
+                   
+                    
                     // Kiírás
-                    for (int i = 0; i < tablazat.GetLength(0); i++)
+                    for (int i = 0; i < tabla_mag; i++)
                     {
-                        for (int j = 0; j < tablazat.GetLength(1); j++)
+                        Console.WriteLine(vizszintes_vonal);
+                        for (int j = 0; j < tabla_szel; j++)
                         {
-                            Console.Write(tablazat[i, j] + " ");
+                            Console.Write(tabla_osszekoto_fugg +tablazat[i, j]);
 
                         }
+                        Console.Write(tabla_osszekoto_fugg);
                         Console.WriteLine();
 
                     }
+                    Console.WriteLine(vizszintes_vonal);
                     Console.WriteLine(x_y_lep ? "X következik" : "y következik");
 
                     // Felhasználói input
@@ -46,7 +68,7 @@ namespace Amőba_feladat
                     int koordinata_x = int.Parse(Console.ReadLine());
                     Console.WriteLine("Koordináta (y): ");
                     int koordinata_y = int.Parse(Console.ReadLine());
-                    if (tablazat[koordinata_y - 1, koordinata_x - 1] == "[]")
+                    if (tablazat[koordinata_y - 1, koordinata_x - 1] == " ")
                     {
                         lehet_oda = true;
                     }
