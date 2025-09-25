@@ -20,29 +20,44 @@ namespace Amőba_feladat
                     tablazat[i, j] = "[]";
                 }
             }
-
+            bool x_y_lep = true;
+            string karakter = "x";
             while (true)
             {
+                
+              
                 // Kiírás
                 for (int i = 0; i < tablazat.GetLength(0); i++)
                 {
                     for (int j = 0; j < tablazat.GetLength(1); j++)
                     {
                         Console.Write(tablazat[i, j] + " ");
+                      
                     }
                     Console.WriteLine();
+                   
                 }
+                Console.WriteLine(x_y_lep ? "X következik": "y következik");
 
                 // Felhasználói input
                 Console.WriteLine("Koordináta (x): ");
                 int koordinata_x = int.Parse(Console.ReadLine());
                 Console.WriteLine("Koordináta (y): ");
                 int koordinata_y = int.Parse(Console.ReadLine());
-                Console.WriteLine("Karakter x/o: ");
-                string karakter = Console.ReadLine();
+                if (x_y_lep)
+                {
+                    karakter = "x";
+                    x_y_lep = false;
+                }
+                else
+                {
+                    karakter = "y";
+                    x_y_lep = true;
+                }
 
-                // Tábla frissítése
-                tablazat[koordinata_y - 1, koordinata_x - 1] = karakter;
+
+                    // Tábla frissítése
+                    tablazat[koordinata_y - 1, koordinata_x - 1] = karakter;
 
                 Console.Clear();
             }
