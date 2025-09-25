@@ -42,6 +42,8 @@ namespace Amőba_feladat
                 vizszintes_vonal += tabla_vonalai;
                 vizszintes_vonal += tabla_vonalai;
             }
+            string babu1 = " x ";
+            string babu2 = " y ";
             while (true)
             {
                 try
@@ -54,7 +56,18 @@ namespace Amőba_feladat
                         Console.WriteLine(vizszintes_vonal);
                         for (int j = 0; j < tabla_szel; j++)
                         {
-                            Console.Write(tabla_osszekoto_fugg +tablazat[i, j]);
+                            Console.Write(tabla_osszekoto_fugg);
+                            if (tablazat[i, j] == babu1)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                            }
+                            else if (tablazat[i, j] == babu2)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                            }
+                           
+                             Console.Write(tablazat[i, j]);
+                            Console.ForegroundColor = ConsoleColor.White;
 
                         }
                         Console.Write(tabla_osszekoto_fugg);
@@ -89,12 +102,12 @@ namespace Amőba_feladat
 
                         if (x_y_lep)
                         {
-                            karakter = " x ";
+                            karakter = babu1;
                             x_y_lep = false;
                         }
                         else
                         {
-                            karakter = " y ";
+                            karakter = babu2;
                             x_y_lep = true;
                         }
 
