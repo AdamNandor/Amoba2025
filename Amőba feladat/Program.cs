@@ -32,6 +32,16 @@ namespace Amőba_feladat
             Console.WriteLine("Karakter x/o: ");
             karakter = Console.ReadLine();
             tablazat[koordinata_x, koordinata_y] = karakter;
+            Console.Clear();
+            for (int i = 0; i < tablazat.GetLength(0); i++)
+            {
+                for (int j = 0; j < tablazat.GetLength(1); j++)
+                {
+                    Console.Write(tablazat[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
         }
     }
 }
