@@ -10,37 +10,44 @@ namespace Amőba_feladat
     {
         static void Main(string[] args)
         {
-            int koordinata_x = 0;
-            int koordinata_y = 0;
-            string karakter = "";
-
             string[,] tablazat = new string[10, 10];
 
+            // Tábla inicializálása
             for (int i = 0; i < tablazat.GetLength(0); i++)
             {
                 for (int j = 0; j < tablazat.GetLength(1); j++)
                 {
                     tablazat[i, j] = "[]";
-                    Console.Write(tablazat[i, j] + " ");
                 }
-                Console.WriteLine();
             }
-            Console.WriteLine("Koordináta (x): ");
-            koordinata_x = int.Parse(Console.ReadLine());
-            Console.WriteLine("Koordináta (y): ");
-            koordinata_y = int.Parse(Console.ReadLine());
-            Console.WriteLine("Karakter x/o: ");
-            karakter = Console.ReadLine();
-            tablazat[koordinata_x, koordinata_y] = karakter;
-            Console.Clear();
-            for (int i = 0; i < tablazat.GetLength(0); i++)
+
+            while (true)
             {
-                for (int j = 0; j < tablazat.GetLength(1); j++)
+                // Kiírás
+                for (int i = 0; i < tablazat.GetLength(0); i++)
                 {
-                    Console.Write(tablazat[i, j] + " ");
+                    for (int j = 0; j < tablazat.GetLength(1); j++)
+                    {
+                        Console.Write(tablazat[i, j] + " ");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
+
+                // Felhasználói input
+                Console.WriteLine("Koordináta (x): ");
+                int koordinata_x = int.Parse(Console.ReadLine());
+                Console.WriteLine("Koordináta (y): ");
+                int koordinata_y = int.Parse(Console.ReadLine());
+                Console.WriteLine("Karakter x/o: ");
+                string karakter = Console.ReadLine();
+
+                // Tábla frissítése
+                tablazat[koordinata_y - 1, koordinata_x - 1] = karakter;
+
+                Console.Clear();
             }
+
+
 
         }
     }
