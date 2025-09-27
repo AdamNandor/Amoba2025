@@ -15,10 +15,10 @@ namespace Amőba_feladat
             string tabla_vonalai = "-";
             string tabla_osszekoto_viz = "+";
             string tabla_osszekoto_fugg = "|";
+            int nyereshez_karakter = 5;
 
 
-
-            string[,] tablazat = new string[10, 10];
+            string[,] tablazat = new string[10,10];
 
             // Tábla inicializálása
             for (int i = 0; i < tablazat.GetLength(0); i++)
@@ -35,7 +35,7 @@ namespace Amőba_feladat
             int tabla_szel = tablazat.GetLength(1);
 
             string vizszintes_vonal = "";
-            for (int i =0;i<=tabla_mag; i++)
+            for (int i =0;i<tabla_mag; i++)
             {
                 vizszintes_vonal += tabla_osszekoto_viz;
                 vizszintes_vonal += tabla_vonalai;
@@ -44,12 +44,16 @@ namespace Amőba_feladat
             }
             string babu1 = " x ";
             string babu2 = " y ";
+            string ellenor = "";
+            string meg_lenni_babu1 = string.Concat(Enumerable.Repeat(babu1, nyereshez_karakter));
+            string meg_lenni_babu2 = string.Concat(Enumerable.Repeat(babu2, nyereshez_karakter));
+
             while (true)
             {
                 try
                 {
                    
-                    
+                    Console.Clear();
                     // Kiírás
                     for (int i = 0; i < tabla_mag; i++)
                     {
@@ -74,6 +78,7 @@ namespace Amőba_feladat
                         Console.WriteLine();
 
                     }
+                   
                     Console.WriteLine(vizszintes_vonal);
                     Console.WriteLine(x_y_lep ? "X következik" : "y következik");
 
@@ -82,6 +87,10 @@ namespace Amőba_feladat
                     int koordinata_x = int.Parse(Console.ReadLine());
                     Console.WriteLine("Koordináta (y): ");
                     int koordinata_y = int.Parse(Console.ReadLine());
+
+
+
+
                     if (tablazat[koordinata_y - 1, koordinata_x - 1] == "   ")
                     {
                         lehet_oda = true;
@@ -115,8 +124,48 @@ namespace Amőba_feladat
                         // Tábla frissítése
                         tablazat[koordinata_y - 1, koordinata_x - 1] = karakter;
 
-                        Console.Clear();
+
+
+                        //ellenőrzés átló
+
+
+                    int x =koordinata_x-1;
+                    int y=koordinata_y-1;
+              
+                     while (x!=0 && y != 0)
+                        {
+                            x--;
+                            y--;
+                            
+                        }
+                    Console.WriteLine(x);
+                    Console.WriteLine(y);
+                    
+                    while (x!=tabla_szel && y!= tabla_mag)
+                        {
+                           ellenor += $"{tablazat[y, x]}";
+                        
+                            x++;
+                            y++;
+                        }
+                       
+                        if (ellenor.Contains( meg_lenni_babu1))
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"nyert: {babu1}");
+                            Console.ReadLine();
+                        }
+                        else if (ellenor.Contains(meg_lenni_babu2))
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"nyert: {babu2}");
+                            Console.ReadLine();
+                        }
+                        ellenor = "";
+
+
                     }
+
                 }
 
                 catch (Exception ex)
@@ -128,6 +177,7 @@ namespace Amőba_feladat
                     {
                         Console.WriteLine(ex);
                     }
+                    Console.ReadLine ();
                     
                 }
             }
