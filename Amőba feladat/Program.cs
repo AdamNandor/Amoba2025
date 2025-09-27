@@ -8,14 +8,39 @@ namespace Amőba_feladat
 {
     internal class Program
     {
+        static string tabla_vonalai = "-";
+        static string tabla_osszekoto_viz = "+";
+        static string tabla_osszekoto_fugg = "|";
+        static int nyereshez_karakter = 5;
+        static string babu1 = " x ";
+        static string babu2 = " y ";
+        static string ellenor = "";
+        static string meg_lenni_babu1 = string.Concat(Enumerable.Repeat(babu1, nyereshez_karakter));
+        static string meg_lenni_babu2 = string.Concat(Enumerable.Repeat(babu2, nyereshez_karakter));
+
+        static void ellenorzo(string check)
+        {
+            if (check.Contains(meg_lenni_babu1))
+            {
+                Console.Clear();
+                Console.WriteLine($"nyert: {babu1}");
+                Console.ReadLine();
+            }
+            else if (check.Contains(meg_lenni_babu2))
+            {
+                Console.Clear();
+                Console.WriteLine($"nyert: {babu2}");
+                Console.ReadLine();
+            }
+            ellenor = "";
+       
+        }
+
         static void Main(string[] args)
         {
 
           
-            string tabla_vonalai = "-";
-            string tabla_osszekoto_viz = "+";
-            string tabla_osszekoto_fugg = "|";
-            int nyereshez_karakter = 5;
+            
 
 
             string[,] tablazat = new string[10,10];
@@ -42,16 +67,17 @@ namespace Amőba_feladat
                 vizszintes_vonal += tabla_vonalai;
                 vizszintes_vonal += tabla_vonalai;
             }
-            string babu1 = " x ";
-            string babu2 = " y ";
-            string ellenor = "";
-            string meg_lenni_babu1 = string.Concat(Enumerable.Repeat(babu1, nyereshez_karakter));
-            string meg_lenni_babu2 = string.Concat(Enumerable.Repeat(babu2, nyereshez_karakter));
+           
 
             while (true)
             {
                 try
                 {
+
+                   
+
+
+
                    
                     Console.Clear();
                     // Kiírás
@@ -126,22 +152,21 @@ namespace Amőba_feladat
 
 
 
-                        //ellenőrzés átló
+                     //ellenőrzés átló   balfent-jobb lent
 
 
                     int x =koordinata_x-1;
                     int y=koordinata_y-1;
               
-                     while (x!=0 && y != 0)
+                     while (x>0 && y > 0)
                         {
                             x--;
                             y--;
                             
                         }
-                    Console.WriteLine(x);
-                    Console.WriteLine(y);
+                
                     
-                    while (x!=tabla_szel && y!= tabla_mag)
+                    while (x<tabla_szel && y< tabla_mag)
                         {
                            ellenor += $"{tablazat[y, x]}";
                         
@@ -149,22 +174,58 @@ namespace Amőba_feladat
                             y++;
                         }
                        
-                        if (ellenor.Contains( meg_lenni_babu1))
+                    
+                        ellenorzo(ellenor);
+
+
+
+
+
+
+                     x = koordinata_x - 1;
+                     y = koordinata_y - 1;
+
+
+
+
+                        while (x > 0 && y < tabla_mag-1)
                         {
-                            Console.Clear();
-                            Console.WriteLine($"nyert: {babu1}");
-                            Console.ReadLine();
+                            x--;
+                            y++;
+
                         }
-                        else if (ellenor.Contains(meg_lenni_babu2))
+                        Console.WriteLine(x);
+                        Console.WriteLine(y);
+                        
+
+
+                        while (x < tabla_szel && y >= 0)
                         {
-                            Console.Clear();
-                            Console.WriteLine($"nyert: {babu2}");
-                            Console.ReadLine();
+                            ellenor += $"{tablazat[y, x]}";
+                            x++;
+                            y--;
                         }
-                        ellenor = "";
+
+                        ellenorzo(ellenor);
+
+
 
 
                     }
+                    //ellenőrzés átló   balfent-jobb lent
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 }
 
