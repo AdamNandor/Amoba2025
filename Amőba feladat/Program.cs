@@ -207,12 +207,16 @@ namespace Amőba_feladat
                         }
 
                         ellenorzo(ellenor);
-
-                        x = koordinata_x - 1;
                         y = koordinata_y - 1;
                         for (int i = 0; i < tabla_szel; i++)
                         {
                             ellenor += $"{tablazat[y, i]}";
+                        }
+
+                        x = koordinata_x - 1;
+                        for (int i = 0; i < tabla_mag; i++)
+                        {
+                            ellenor += $"{tablazat[i, x]}";
                         }
                         ellenorzo(ellenor);
 
