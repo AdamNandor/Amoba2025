@@ -126,7 +126,7 @@ namespace Amőba_feladat
 
                         lehet_oda= false;
                         Console.WriteLine("ide már nem lehet tenni!");
-                        Console.WriteLine("enterre tovább");
+                        Console.WriteLine("enterrel tovább");
                         Console.ReadLine();
                         Console.Clear();
                     }
@@ -185,7 +185,7 @@ namespace Amőba_feladat
                      x = koordinata_x - 1;
                      y = koordinata_y - 1;
 
-
+                        //ellenőrzés átló   balfent-jobb lent
 
 
                         while (x > 0 && y < tabla_mag-1)
@@ -208,11 +208,16 @@ namespace Amőba_feladat
 
                         ellenorzo(ellenor);
 
-
-
+                        x = koordinata_x - 1;
+                        y = koordinata_y - 1;
+                        for (int i = 0; i < tabla_szel; i++)
+                        {
+                            ellenor += $"{tablazat[y, i]}";
+                        }
+                        ellenorzo(ellenor);
 
                     }
-                    //ellenőrzés átló   balfent-jobb lent
+                    
 
 
 
