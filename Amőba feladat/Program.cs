@@ -33,227 +33,187 @@ namespace Amőba_feladat
                 Console.ReadLine();
             }
             ellenor = "";
-       
         }
 
         static void Main(string[] args)
         {
-
-          
-            
-
-
-            string[,] tablazat = new string[10,10];
-
-            // Tábla inicializálása
-            for (int i = 0; i < tablazat.GetLength(0); i++)
+            bool uj_jatek = true;
+            Console.WriteLine("Új játék(1-es gomb)\n Kilépés(2-es gomb) ");
+            int bekeres = int.Parse(Console.ReadLine());
+            if (bekeres == 1)
             {
-                for (int j = 0; j < tablazat.GetLength(1); j++)
+                uj_jatek = true;
+            }
+            else if (bekeres == 2)
+            {
+                Environment.Exit(0);
+            }
+            while (uj_jatek)
+            {
+                string[,] tablazat = new string[10, 10];
+
+                // Tábla inicializálása
+                for (int i = 0; i < tablazat.GetLength(0); i++)
                 {
-                    tablazat[i, j] = "   ";
+                    for (int j = 0; j < tablazat.GetLength(1); j++)
+                    {
+                        tablazat[i, j] = "   ";
+                    }
                 }
-            }
-            bool x_y_lep = true;
-            string karakter = " x ";
-            bool lehet_oda=false;
-            int tabla_mag = tablazat.GetLength(0);
-            int tabla_szel = tablazat.GetLength(1);
+                bool x_y_lep = true;
+                string karakter = " x ";
+                bool lehet_oda = false;
+                int tabla_mag = tablazat.GetLength(0);
+                int tabla_szel = tablazat.GetLength(1);
 
-            string vizszintes_vonal = "";
-            for (int i =0;i<tabla_mag; i++)
-            {
-                vizszintes_vonal += tabla_osszekoto_viz;
-                vizszintes_vonal += tabla_vonalai;
-                vizszintes_vonal += tabla_vonalai;
-                vizszintes_vonal += tabla_vonalai;
-            }
-           
-
-            while (true)
-            {
-                try
+                string vizszintes_vonal = "";
+                for (int i = 0; i < tabla_mag; i++)
                 {
+                    vizszintes_vonal += tabla_osszekoto_viz;
+                    vizszintes_vonal += tabla_vonalai;
+                    vizszintes_vonal += tabla_vonalai;
+                    vizszintes_vonal += tabla_vonalai;
+                }
 
-                   
-
-
-
-                   
-                    Console.Clear();
-                    // Kiírás
-                    for (int i = 0; i < tabla_mag; i++)
+                while (true)
+                {
+                    try
                     {
-                        Console.WriteLine(vizszintes_vonal);
-                        for (int j = 0; j < tabla_szel; j++)
-                        {
-                            Console.Write(tabla_osszekoto_fugg);
-                            if (tablazat[i, j] == babu1)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                            }
-                            else if (tablazat[i, j] == babu2)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                            }
-                           
-                             Console.Write(tablazat[i, j]);
-                            Console.ForegroundColor = ConsoleColor.White;
-
-                        }
-                        Console.Write(tabla_osszekoto_fugg);
-                        Console.WriteLine();
-
-                    }
-                   
-                    Console.WriteLine(vizszintes_vonal);
-                    Console.WriteLine(x_y_lep ? "X következik" : "y következik");
-
-                    // Felhasználói input
-                    Console.WriteLine("Koordináta (x): ");
-                    int koordinata_x = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Koordináta (y): ");
-                    int koordinata_y = int.Parse(Console.ReadLine());
-
-
-
-
-                    if (tablazat[koordinata_y - 1, koordinata_x - 1] == "   ")
-                    {
-                        lehet_oda = true;
-                    }
-                    else
-                    {
-
-                        lehet_oda= false;
-                        Console.WriteLine("ide már nem lehet tenni!");
-                        Console.WriteLine("enterrel tovább");
-                        Console.ReadLine();
                         Console.Clear();
-                    }
-
-                    if (lehet_oda)
-                    {
-
-
-                        if (x_y_lep)
+                        // Kiírás
+                        for (int i = 0; i < tabla_mag; i++)
                         {
-                            karakter = babu1;
-                            x_y_lep = false;
+                            Console.WriteLine(vizszintes_vonal);
+                            for (int j = 0; j < tabla_szel; j++)
+                            {
+                                Console.Write(tabla_osszekoto_fugg);
+                                if (tablazat[i, j] == babu1)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                }
+                                else if (tablazat[i, j] == babu2)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                }
+
+                                Console.Write(tablazat[i, j]);
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
+                            Console.Write(tabla_osszekoto_fugg);
+                            Console.WriteLine();
+                        }
+
+                        Console.WriteLine(vizszintes_vonal);
+                        Console.WriteLine(x_y_lep ? "X következik" : "y következik");
+
+                        // Felhasználói input
+                        Console.WriteLine("Koordináta (x): ");
+                        int koordinata_x = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Koordináta (y): ");
+                        int koordinata_y = int.Parse(Console.ReadLine());
+
+                        if (tablazat[koordinata_y - 1, koordinata_x - 1] == "   ")
+                        {
+                            lehet_oda = true;
                         }
                         else
                         {
-                            karakter = babu2;
-                            x_y_lep = true;
+                            lehet_oda = false;
+                            Console.WriteLine("ide már nem lehet tenni!");
+                            Console.WriteLine("enterrel tovább");
+                            Console.ReadLine();
+                            Console.Clear();
                         }
 
-
-                        // Tábla frissítése
-                        tablazat[koordinata_y - 1, koordinata_x - 1] = karakter;
-
-
-
-                     //ellenőrzés átló   balfent-jobb lent
-
-
-                    int x =koordinata_x-1;
-                    int y=koordinata_y-1;
-              
-                     while (x>0 && y > 0)
+                        if (lehet_oda)
                         {
-                            x--;
-                            y--;
-                            
+                            if (x_y_lep)
+                            {
+                                karakter = babu1;
+                                x_y_lep = false;
+                            }
+                            else
+                            {
+                                karakter = babu2;
+                                x_y_lep = true;
+                            }
+
+                            // Tábla frissítése
+                            tablazat[koordinata_y - 1, koordinata_x - 1] = karakter;
+
+                            //ellenőrzés átló   balfent-jobb lent
+                            int x = koordinata_x - 1;
+                            int y = koordinata_y - 1;
+
+                            while (x > 0 && y > 0)
+                            {
+                                x--;
+                                y--;
+                            }
+
+                            while (x < tabla_szel && y < tabla_mag)
+                            {
+                                ellenor += $"{tablazat[y, x]}";
+                                x++;
+                                y++;
+                            }
+                            ellenorzo(ellenor);
+
+                            x = koordinata_x - 1;
+                            y = koordinata_y - 1;
+
+                            //ellenőrzés átló   balfent-jobb lent
+                            while (x > 0 && y < tabla_mag - 1)
+                            {
+                                x--;
+                                y++;
+                            }
+
+                            while (x < tabla_szel && y >= 0)
+                            {
+                                ellenor += $"{tablazat[y, x]}";
+                                x++;
+                                y--;
+                            }
+                            ellenorzo(ellenor);
+
+                            y = koordinata_y - 1;
+                            for (int i = 0; i < tabla_szel; i++)
+                            {
+                                ellenor += $"{tablazat[y, i]}";
+                            }
+
+                            x = koordinata_x - 1;
+                            for (int i = 0; i < tabla_mag; i++)
+                            {
+                                ellenor += $"{tablazat[i, x]}";
+                            }
+                            ellenorzo(ellenor);
                         }
-                
-                    
-                    while (x<tabla_szel && y< tabla_mag)
-                        {
-                           ellenor += $"{tablazat[y, x]}";
-                        
-                            x++;
-                            y++;
-                        }
-                       
-                    
-                        ellenorzo(ellenor);
-
-
-
-
-
-
-                     x = koordinata_x - 1;
-                     y = koordinata_y - 1;
-
-                        //ellenőrzés átló   balfent-jobb lent
-
-
-                        while (x > 0 && y < tabla_mag-1)
-                        {
-                            x--;
-                            y++;
-
-                        }
-                        Console.WriteLine(x);
-                        Console.WriteLine(y);
-                        
-
-
-                        while (x < tabla_szel && y >= 0)
-                        {
-                            ellenor += $"{tablazat[y, x]}";
-                            x++;
-                            y--;
-                        }
-
-                        ellenorzo(ellenor);
-                        y = koordinata_y - 1;
-                        for (int i = 0; i < tabla_szel; i++)
-                        {
-                            ellenor += $"{tablazat[y, i]}";
-                        }
-
-                        x = koordinata_x - 1;
-                        for (int i = 0; i < tabla_mag; i++)
-                        {
-                            ellenor += $"{tablazat[i, x]}";
-                        }
-                        ellenorzo(ellenor);
-
                     }
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                }
-
-                catch (Exception ex)
-                {
-                    Console.WriteLine("hiba történt!");
-                    Console.WriteLine("Szeretné látni a hibát? (i/n)");
-                    string hiba = Console.ReadLine();
-                    if (hiba == "i")
+                    catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        Console.WriteLine("hiba történt!");
+                        Console.WriteLine("Szeretné látni a hibát? (i/n)");
+                        string hiba = Console.ReadLine();
+                        if (hiba == "i")
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        Console.ReadLine();
                     }
-                    Console.ReadLine ();
-                    
                 }
             }
-
-
-
+            Console.WriteLine("Új játék(1-es gomb)\n Kilépés(2-es gomb) ");
+            int bekeres2 = int.Parse(Console.ReadLine());
+            if (bekeres2 == 1)
+            {
+                uj_jatek = true;
+            }
+            else if (bekeres2 == 2)
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }
