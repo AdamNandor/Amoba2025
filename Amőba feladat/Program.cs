@@ -17,6 +17,27 @@ namespace Amőba_feladat
         static string ellenor = "";
         static string meg_lenni_babu1 = string.Concat(Enumerable.Repeat(babu1, nyereshez_karakter));
         static string meg_lenni_babu2 = string.Concat(Enumerable.Repeat(babu2, nyereshez_karakter));
+      
+
+        static bool van_meg_hely(string[,] tabla)
+        {
+            for (int i = 0; i < tabla.GetLength(0); i++)
+            {
+                for(int j = 0; j < tabla.GetLength(1); j++)
+                {
+                    if (tabla[i,j]=="   ")
+                    {
+
+                        return true;
+                    }
+                }
+            }
+            return false;
+           
+
+        }
+
+     
 
         static void ellenorzo(string check)
         {
@@ -50,7 +71,7 @@ namespace Amőba_feladat
             }
             while (uj_jatek)
             {
-                string[,] tablazat = new string[10, 10];
+                string[,] tablazat = new string[10,10];
 
                 // Tábla inicializálása
                 for (int i = 0; i < tablazat.GetLength(0); i++)
@@ -75,7 +96,9 @@ namespace Amőba_feladat
                     vizszintes_vonal += tabla_vonalai;
                 }
 
-                while (true)
+                
+
+                while (van_meg_hely(tablazat))
                 {
                     try
                     {
@@ -105,6 +128,8 @@ namespace Amőba_feladat
 
                         Console.WriteLine(vizszintes_vonal);
                         Console.WriteLine(x_y_lep ? "X következik" : "y következik");
+
+
 
                         // Felhasználói input
                         Console.WriteLine("Koordináta (x): ");
@@ -190,6 +215,7 @@ namespace Amőba_feladat
                             }
                             ellenorzo(ellenor);
                         }
+                     
                     }
                     catch (Exception ex)
                     {
@@ -202,7 +228,21 @@ namespace Amőba_feladat
                         }
                         Console.ReadLine();
                     }
+                 
                 }
+
+                if (!van_meg_hely(tablazat))
+                {
+                    uj_jatek = false;
+                    Console.Clear();
+                    Console.WriteLine("Nincs hely több hely! Itt a vége! szép volt?");
+                    Console.WriteLine("Szeretne újat? (i/n)");
+                    if (Console.ReadLine() == "i")
+                    {
+                        uj_jatek = true;
+                    }
+                }
+
             }
             Console.WriteLine("Új játék(1-es gomb)\n Kilépés(2-es gomb) ");
             int bekeres2 = int.Parse(Console.ReadLine());
