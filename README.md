@@ -77,3 +77,39 @@ Színek
 
 ---
 
+
+
+fejlesztői dokumentáció
+
+program:
+  nev: Amőba konzolos játék
+  nyelv: C#
+  leiras: >
+    Kétjátékos amőba játék konzolban. A játékosok felváltva rakják le a saját bábujukat (x vagy y)
+    egy 10x10-es táblán. Az nyer, aki elsőként ötöt rak egymás mellé vízszintesen, függőlegesen vagy átlósan.
+
+adatkezeles:
+  tabla: 10x10-es 2D tömb, mezők: " x ", " y " vagy üres ("   ")
+  valtozok:
+    - x_y_lep: következő játékos váltása
+    - nyert: győztes állapot tárolása
+    - ellenor: aktuálisan ellenőrzött sor karakterei
+    - uj_jatek: új játék indításának jelzése
+
+teszteles:
+  modszerek:
+    - Kezi jatek: játékosként tesztelve a funkciókat (lépés, nyerés, döntetlen)
+    - Hibas inputok: pl. foglalt mezőre lépés, nem szám bevitel
+  tesztek:
+    - Vizszintes 5 bábu: OK
+    - Függőleges 5 bábu: OK
+    - Átlós (mindkét irány): OK
+    - Döntetlen: OK
+    - Foglalt mezőre lépés: megfelelő figyelmeztetés
+    - Hibás input (pl. betű): hiba kezelve
+
+fejlesztesi_otletek:
+  - ellenor változó minden ellenőrzés előtt legyen nullázva
+  - ellenőrzéseket külön függvényekbe szervezni
+  - számbevitel TryParse-szal történjen, ne dobjon hibát
+
