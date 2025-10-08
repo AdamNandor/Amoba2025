@@ -1,77 +1,79 @@
 Amőba játék – Felhasználói dokumentáció
 =======================================
 
-Áttekintés
-----------
-Ez a program egy **10×10-es táblán játszható kétszemélyes Amőba (ötödölő)** játék.  
-A cél, hogy az egyik játékos 5 azonos jelet (**X** vagy **Y**) rakjon egymás mellé vízszintesen, függőlegesen vagy átlósan.  
-
-A program konzolos felületen fut, és felváltva kéri a játékosok lépéseit koordináták megadásával.
+Felhasználói dokumentáció
 
 Indítás
--------
-A játék a `Program.cs` fájl futtatásával indítható (például Visual Studio-ban, vagy a parancssorban `dotnet run` paranccsal).
 
-Játékmenet
-----------
-1. A program indítás után inicializálja a 10×10-es táblát.  
-   - Az üres mezőket három szóköz (`"   "`) jelöli.
-   - Az **X** játékos zöld színnel, az **Y** játékos piros színnel jelenik meg a táblán.
+A program elindításakor megjelenik egy egyszerű menü:
 
-2. A tábla kirajzolása után a program kiírja, hogy **melyik játékos következik**:  
-   - "X következik" → az első játékos lép  
-   - "Y következik" → a második játékos lép  
+Új játék (1-es gomb)
+Kilépés (2-es gomb)
 
-3. A játékosoknak meg kell adniuk a lépésük **x** és **y koordinátáját**:  
-   - `Koordináta (x):` → az oszlop száma (1–10)  
-   - `Koordináta (y):` → a sor száma (1–10)  
+- Írd be az 1-et az új játék indításához.
+- Írd be a 2-t a kilépéshez.
 
-4. A program ellenőrzi, hogy a választott mező **szabad-e**.  
-   - Ha igen → a bábu (X vagy Y) bekerül a táblára.  
-   - Ha nem → hibaüzenet jelenik meg: *„ide már nem lehet tenni!”*, majd újra kér egy érvényes lépést.  
+---
 
-5. Minden lépés után a program **ellenőrzi a győzelmi feltételt**:  
-   - 5 egymás melletti azonos jel vízszintesen, függőlegesen vagy átlósan.  
-   - Ha valamelyik játékos nyer, a program törli a képernyőt, majd kiírja:  
-     - `nyert:  x` vagy  
-     - `nyert:  y`  
-     Ezután a játék leáll.
+Játékszabályok
 
-6. Ha a bemeneti érték hibás (például betűt írsz szám helyett), a program hibaüzenetet ad:  
-   - *„hiba történt!”*  
-   - Ezután megkérdezi: *„Szeretné látni a hibát? (i/n)”*  
-     - Ha `i` → részletes hibainformáció megjelenik  
-     - Ha `n` → csak folytatódik a játék  
+- A játékot két játékos játssza felváltva.
+- A cél: 5 azonos jel (x vagy y) egymás mellett elhelyezése vízszintesen, függőlegesen vagy átlósan.
+- A tábla mérete: 10 sor × 10 oszlop.
 
-Billentyűzet használat
-----------------------
-- **Számok (1–10)**: koordináták megadására  
-- **Enter**: lépés megerősítése  
-- **Enter hibánál**: továbblépés újra próbálkozáshoz  
+---
 
-Játék vége
-----------
-A játék addig tart, amíg valamelyik játékos el nem ér 5 egymás melletti bábut.  
-Döntetlen állapot nincs kezelve, a játék végtelenül folytatódik, ha senki sem nyer.
+Lépés menete
 
-Példa játékmenet
-----------------
+1. A program kiírja, hogy melyik játékos következik (x vagy y).
+2. A játékos megadja a kívánt mező oszlopát (x) és sorát (y):
+   Példa:
+   Koordináta (x): 3
+   Koordináta (y): 5
 
-+---+---+---+---+---+---+---+---+---+---
-|   |   |   |   |   |   |   |   |   |   |
-+---+---+---+---+---+---+---+---+---+---
-...
-X következik
-Koordináta (x):
-3
-Koordináta (y):
-5
+   Ez a lépés az 3. sor, 5. oszlop mezőre helyezi a bábut.
 
-Ezután az **X** bábu a (3,5) mezőre kerül.
+3. Ha a mező már foglalt, a program figyelmeztet, és új lépést kér.
 
-Tippek
-------
-- Mindig ügyelj arra, hogy a koordinátákat **1 és 10 közötti számmal** add meg.  
-- Ha véletlenül rossz helyre raksz, azt már nem lehet javítani.  
-- Figyeld a színezést: **zöld az X**, **piros az Y**.
-"""
+---
+
+Nyerés és játék vége
+
+- A játék automatikusan ellenőrzi minden lépés után, hogy van-e 5 azonos jel egymás mellett.
+- Ha valamelyik játékos nyer:
+  nyert:  x  vagy nyert:  y
+
+- Ezután a program megkérdezi:
+  új játék (i/n)
+
+  - i – új játék kezdése
+  - n – kilépés
+
+---
+
+Döntetlen
+
+- Ha betelik a tábla és senki sem nyer:
+  Nincs több hely! Itt a vége!
+  Szeretne újat? (i/n)
+
+---
+
+Hibakezelés
+
+- Ha nem számot írsz be vagy hibás koordinátát adsz meg, a program hibaüzenetet jelenít meg.
+- A hiba után lehetőséget kapsz megtekinteni a részletes hibaüzenetet:
+  hiba történt!
+  Szeretné látni a hibát? (i/n)
+
+---
+
+
+
+Színek
+
+- x: zöld színnel jelenik meg
+- y: piros színnel jelenik meg
+
+---
+
