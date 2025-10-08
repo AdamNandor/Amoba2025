@@ -17,8 +17,8 @@ namespace Amőba_feladat
         static string ellenor = "";
         static string meg_lenni_babu1 = string.Concat(Enumerable.Repeat(babu1, nyereshez_karakter));
         static string meg_lenni_babu2 = string.Concat(Enumerable.Repeat(babu2, nyereshez_karakter));
-      
-
+        static bool uj_jatek = false;
+        static bool nyert=false;
         static bool van_meg_hely(string[,] tabla)
         {
             for (int i = 0; i < tabla.GetLength(0); i++)
@@ -45,20 +45,42 @@ namespace Amőba_feladat
             {
                 Console.Clear();
                 Console.WriteLine($"nyert: {babu1}");
-                Console.ReadLine();
+                nyert = true;
+                Console.WriteLine("új játék (i/n)");
+
+                if (Console.ReadLine() == "i")
+                {
+                    uj_jatek = true;
+                    
+                }
+                else
+                {
+                    uj_jatek=false;
+                }
             }
             else if (check.Contains(meg_lenni_babu2))
             {
                 Console.Clear();
                 Console.WriteLine($"nyert: {babu2}");
-                Console.ReadLine();
+                nyert = true;
+                Console.WriteLine("új játék (i/n)");
+
+                if (Console.ReadLine() == "i")
+                {
+                    uj_jatek = true;
+
+                }
+                else
+                {
+                    uj_jatek = false;
+                }
             }
             ellenor = "";
         }
 
         static void Main(string[] args)
         {
-            bool uj_jatek = true;
+            
             Console.WriteLine("Új játék(1-es gomb)\n Kilépés(2-es gomb) ");
             int bekeres = int.Parse(Console.ReadLine());
             if (bekeres == 1)
@@ -71,6 +93,7 @@ namespace Amőba_feladat
             }
             while (uj_jatek)
             {
+                nyert = false;
                 string[,] tablazat = new string[10,10];
 
                 // Tábla inicializálása
@@ -98,7 +121,7 @@ namespace Amőba_feladat
 
                 
 
-                while (van_meg_hely(tablazat))
+                while (van_meg_hely(tablazat) && !nyert)
                 {
                     try
                     {
@@ -244,13 +267,14 @@ namespace Amőba_feladat
                 }
 
             }
-            Console.WriteLine("Új játék(1-es gomb)\n Kilépés(2-es gomb) ");
+            Console.WriteLine("Új játék(1-es gomb)");
+            Console.WriteLine("Kilépés(2-es gomb) ");
             int bekeres2 = int.Parse(Console.ReadLine());
             if (bekeres2 == 1)
             {
                 uj_jatek = true;
             }
-            else if (bekeres2 == 2)
+            else if (bekeres2 ==2)
             {
                 Environment.Exit(0);
             }
