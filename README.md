@@ -31,7 +31,7 @@ Lépés menete
    Koordináta (x): 3
    Koordináta (y): 5
 
-   Ez a lépés az 3. sor, 5. oszlop mezőre helyezi a bábut.
+   Ez a lépés az 5. sor, 3. oszlop mezőre helyezi a bábut.
 
 3. Ha a mező már foglalt, a program figyelmeztet, és új lépést kér.
 
