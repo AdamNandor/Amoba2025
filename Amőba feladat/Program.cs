@@ -224,13 +224,13 @@ namespace Amőba_feladat
                                 y--;
                             }
                             ellenorzo(ellenor);
-
+                            //Vízszintes ellenőrzés
                             y = koordinata_y - 1;
                             for (int i = 0; i < tabla_szel; i++)
                             {
                                 ellenor += $"{tablazat[y, i]}";
                             }
-
+                            //Függőleges ellenőrzés
                             x = koordinata_x - 1;
                             for (int i = 0; i < tabla_mag; i++)
                             {
